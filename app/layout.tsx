@@ -7,7 +7,8 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Supabase Auth + Next.js Demo",
+  title: "User Guessing Game",
+  description: "An interactive guessing game where users chat and guess each other's identities",
 };
 
 export default function RootLayout({

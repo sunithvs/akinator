@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUser } from "react-icons/fa6";
 
-import { createClient } from "@/lib/supabase/server";
+import { useUser } from "@/hooks/use-user";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,14 +10,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SignInButton } from "@/components/signin-button";
-
 import { SignOutButton } from "@/components/signout-button";
 
-export async function UserAccountNav() {
-  const supabase = createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+export function UserAccountNav() {
+  const { user, loading } = useUser();
+
+  if (loading) {
+    return (
+      <div className="w-max space-x-2">
+        <div className="bg-border grid size-7 place-items-center rounded-full">
+          <FaUser className="text-muted-foreground" />
+        </div>
+      </div>
+    );
+  }
 
   if (!user) {
     return <SignInButton />;
