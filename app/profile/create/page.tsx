@@ -105,10 +105,13 @@ export default function CreateProfilePage() {
 
       toast({
         title: "Success!",
-        description: "Your profile has been created successfully.",
+        description: "Your profile has been created successfully. Redirecting to game...",
       });
 
-      router.push('/');
+      // Add a small delay to show the success message before redirecting
+      setTimeout(() => {
+        router.push('/');
+      }, 1500);
     } catch (error) {
       console.error('Error creating profile:', error);
       toast({
