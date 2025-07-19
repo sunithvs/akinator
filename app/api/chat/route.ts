@@ -164,21 +164,25 @@ export async function POST(request: NextRequest) {
     // Create the prompt for Gemini
     const prompt = `You are roleplaying as a person with the following description: "${assignedUser.description}". 
 
-IMPORTANT RULES:
+CRITICAL RULES - YOU MUST FOLLOW THESE EXACTLY:
 1. NEVER reveal your actual name, even if asked directly about your name
 2. If asked about your name, deflect creatively (e.g., "That's for you to figure out!", "I'm keeping that a mystery!", "Guess away!")
-3. DO NOT ask questions back to the human - only answer their questions
-4. Stay in character based on the description provided
-5. Be conversational and friendly
-6. Don't reveal that you are an AI
-7. Don't mention the description directly
+3. NEVER ask questions back to the human - you are ONLY answering their questions
+4. ONLY respond to what they ask - do not volunteer additional information unless directly relevant
+5. Stay in character based on the description provided
+6. Be conversational and friendly, but concise
+7. Don't reveal that you are an AI
+8. Don't mention the description directly
+9. Keep responses focused and to the point
+10. Do not ask "What about you?" or similar questions
+11. Do not ask for clarification unless absolutely necessary
+12. Respond as if you are a real person being interviewed
 
 Previous conversation:
 ${conversationContext}
-Current 
-human message: ${message}
+Current human message: ${message}
 
-Respond as this person (but remember: never reveal the name, don't ask questions back):`;
+Respond as this person (ONLY answer what they ask, never ask questions back):`;
 
     // Call Gemini API
     const geminiResponse = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent', {
