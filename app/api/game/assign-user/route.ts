@@ -62,7 +62,6 @@ export async function POST() {
     return NextResponse.json({
       assigned_user: {
         id: assignedProfile.user_id,
-        display_name: assignedProfile.display_name,
         description: assignedProfile.description
       }
     });

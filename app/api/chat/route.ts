@@ -58,7 +58,6 @@ export async function POST(request: NextRequest) {
     // Check if the user is trying to guess the name
     console.log('🔍 DEBUG: Starting name detection...');
     console.log('🔍 DEBUG: Original message:', message);
-    console.log('🔍 DEBUG: Assigned user display name:', assignedUser.display_name);
 
     const messageLower = message.toLowerCase();
     const nameWords = assignedUser.display_name.toLowerCase().split(' ');
