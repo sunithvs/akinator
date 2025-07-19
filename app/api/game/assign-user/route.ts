@@ -15,7 +15,7 @@ export async function POST() {
     // Get all profiles except the current user
     const { data: allProfiles, error: profilesError } = await supabase
       .from('profiles')
-      .select('user_id, display_name, description')
+      .select('user_id, description')
       .neq('user_id', user.id);
 
     if (profilesError) {
